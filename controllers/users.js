@@ -26,10 +26,10 @@ const createUser= async (req,res)=>{
         //#swagger.tags= ["clientes"]
 
     const user={
-        name_client:req.body.firstName,
-        age_client:req.body.lastName,
-        telef_client:req.body.email,
-        address_client:req.body.favoriteColor
+        name_client:req.body.name_client,
+        age_client:req.body.age_client,
+        telef_client:req.body.telef_client,
+        address_client:req.body.address_client
     };
     const response = await mongoDb.getDatabase().db().collection("clientes").insertOne(user);
     if(response.acknowledged){
@@ -45,10 +45,10 @@ const updateUser= async (req,res)=>{
 
         const userId =new ObjectId(req.params.id);
         const user={
-        name_client:req.body.firstName,
-        age_client:req.body.lastName,
-        telef_client:req.body.email,
-        address_client:req.body.favoriteColor
+        name_client:req.body.name_client,
+        age_client:req.body.age_client,
+        telef_client:req.body.telef_client,
+        address_client:req.body.address_client
     };
     const response = await mongoDb.getDatabase().db().collection("clientes").replaceOne({_id: userId},user);
     if(response.modifiedCount>0){
