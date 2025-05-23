@@ -10,6 +10,6 @@ router.get("/",(req,res)=>{
 
 
 // ✅ Users en /users
-router.use("/users",require("./users"));
+router.use("/clientes",require("./clientes"));
 
 module.exports = router;
