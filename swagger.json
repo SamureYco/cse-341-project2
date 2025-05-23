@@ -62,16 +62,16 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "name_client": {
                   "example": "any"
                 },
-                "lastName": {
+                "age_client": {
                   "example": "any"
                 },
-                "email": {
+                "telef_client": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "address_client": {
                   "example": "any"
                 }
               }
@@ -129,16 +129,16 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "name_client": {
                   "example": "any"
                 },
-                "lastName": {
+                "age_client": {
                   "example": "any"
                 },
-                "email": {
+                "telef_client": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "address_client": {
                   "example": "any"
                 }
               }
