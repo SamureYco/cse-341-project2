@@ -1,21 +1,21 @@
 {
-  "name": "cse-341-project1",
+  "name": "cse-341-project2",
   "version": "1.0.0",
-  "description": "My first Project",
+  "description": "My Second Project",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SamureYco/cse-341-project1.git"
+    "url": "git+https://github.com/SamureYco/cse-341-project2.git"
   },
   "author": "Samuel Reyes Condori",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SamureYco/cse-341-project1/issues"
+    "url": "https://github.com/SamureYco/cse-341-project2/issues"
   },
-  "homepage": "https://github.com/SamureYco/cse-341-project1#readme",
+  "homepage": "https://github.com/SamureYco/cse-341-project2#readme",
   "dependencies": {
     "body-parser": "^2.2.0",
     "dotenv": "^16.5.0",

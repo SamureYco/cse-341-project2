@@ -35,7 +35,7 @@
         }
       }
     },
-    "/users/": {
+    "/clientes/": {
       "get": {
         "tags": [
           "clientes"
@@ -88,7 +88,7 @@
         }
       }
     },
-    "/users/{id}": {
+    "/clientes/{id}": {
       "get": {
         "tags": [
           "clientes"
