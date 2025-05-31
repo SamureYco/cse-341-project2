@@ -3,7 +3,7 @@ const router = express.Router();
 
 const usersController= require("../controllers/clientes");
 
-const{ isAuthenticated }= required ("../middleware/authenticate");
+const{ isAuthenticated }= require ("../middleware/authenticate");
 
 router.get("/", usersController.getAll);
 
