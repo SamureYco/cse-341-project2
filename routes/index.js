@@ -3,13 +3,16 @@ const router =require("express").Router();
 router.use("/", require("./swagger"));
 
 router.get("/",(req,res)=>{
-    //#swagger.tags= ["Hello world"]
-    res.json({message:"Hello World"});
+    //#swagger.tags= ["Welcome to my new API"]
+    res.json({message:"Welcome to my new API"});
 });
 
 
 
-// ✅ Users en /users
+// ✅ Clientes en ./clientes
 router.use("/clientes",require("./clientes"));
+
+// ✅ Agregando la ruta de productos
+router.use("/productos", require("./productos"));
 
 module.exports = router;

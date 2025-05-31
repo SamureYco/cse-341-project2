@@ -18,6 +18,7 @@ app.use((req,res,next)=>{
 });
 
 app.use("/", require("./routes"));
+app.use("/api-docs", require("./routes/swagger"));
 
 mongodb.initDb((err) => {
     if(err){
