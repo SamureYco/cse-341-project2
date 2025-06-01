@@ -66,6 +66,12 @@ app.get(
     failureRedirect: "/api-docs",
   }),
   (req, res) => {
+    // 👇 ESTA LÍNEA ES CLAVE
+    req.session.user = {
+      id: req.user.id,
+      username: req.user.username
+    };
+    console.log("Usuario guardado en sesión:", req.session.user);
     res.redirect("/");
   }
 );
