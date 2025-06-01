@@ -1,8 +1,3 @@
-require('dotenv').config();
-
-console.log("ClientID:", process.env.GITHUB_CLIENT_ID);
-console.log("ClientSecret:", process.env.GITHUB_CLIENT_SECRET);
-console.log("CallbackURL:", process.env.CALLBACK_URL);
 
 const express = require("express");
 const bodyParser = require("body-parser");
