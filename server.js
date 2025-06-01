@@ -1,7 +1,9 @@
+require('dotenv').config();
+
 console.log("ClientID:", process.env.GITHUB_CLIENT_ID);
 console.log("ClientSecret:", process.env.GITHUB_CLIENT_SECRET);
 console.log("CallbackURL:", process.env.CALLBACK_URL);
-require('dotenv').config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongodb = require("./data/database");
@@ -65,13 +67,11 @@ passport.deserializeUser((user, done) => {
 });
 
 // Rutas
-app.get("/", (req, res) => {
-  const message = req.user
-    ? "Logged in as " + req.user.displayName
-    : "Logged Out";
-  res.send(message);
-});
 
+// Ruta para iniciar sesión con GitHub
+app.get('/login/github', passport.authenticate('github'));
+
+// Callback después del login en GitHub
 app.get(
   "/github/callback",
   passport.authenticate("github", {
@@ -81,6 +81,13 @@ app.get(
     res.redirect("/");
   }
 );
+
+app.get("/", (req, res) => {
+  const message = req.user
+    ? "Logged in as " + req.user.displayName
+    : "Logged Out";
+  res.send(message);
+});
 
 app.get("/logout", (req, res, next) => {
   req.logout(function (err) {
