@@ -1,5 +1,3 @@
-const { route } = require("./swagger");
-
 const passport = require("passport");
 
 const router =require("express").Router();
@@ -13,14 +11,20 @@ router.get("/",(req,res)=>{
 
 router.get("/login", passport.authenticate("github", { scope: ["user:email"] }), (req,res) => {});
 
-router.get("/logout", function(req,res, next){
+router.get("/logout", function(req, res, next) {
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect("/");
+    });
+});
+/*router.get("/logout", function(req,res, next){
     req.logout(function(req,res,next){
         req.logout(function(err){
             if(err){ return next(err);}
             res.redirect("/")
         })
     })
-});
+});*/
 
 // ✅ Clientes en ./clientes
 router.use("/clientes",require("./clientes"));
