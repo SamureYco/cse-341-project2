@@ -56,9 +56,6 @@
     },
     "/clientes/": {
       "get": {
-        "tags": [
-          "clientes"
-        ],
         "description": "",
         "produces": [
           "application/json"
@@ -73,9 +70,6 @@
         }
       },
       "post": {
-        "tags": [
-          "clientes"
-        ],
         "description": "",
         "parameters": [
           {
@@ -115,9 +109,6 @@
     },
     "/clientes/{id}": {
       "get": {
-        "tags": [
-          "clientes"
-        ],
         "description": "",
         "produces": [
           "application/json"
@@ -134,15 +125,15 @@
           "200": {
             "description": "OK"
           },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "tags": [
-          "clientes"
-        ],
         "description": "",
         "parameters": [
           {
@@ -186,9 +177,6 @@
         }
       },
       "delete": {
-        "tags": [
-          "clientes"
-        ],
         "description": "",
         "parameters": [
           {
