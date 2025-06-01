@@ -22,7 +22,7 @@ function validateClientData(data) {
 
 const getAll = async (req, res) => {
   try {
-    const clientes = await mongoDb.getDatabase().db().collection("clientes").find().toArray();
+    const clientes = await mongoDb.getDatabase().collection("clientes").find().toArray();
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(clientes);
   } catch (error) {
@@ -34,7 +34,7 @@ const getAll = async (req, res) => {
 const getSingle = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id);
-    const cliente = await mongoDb.getDatabase().db().collection("clientes").findOne({ _id: userId });
+    const cliente = await mongoDb.getDatabase().collection("clientes").findOne({ _id: userId });
     if (!cliente) {
       return res.status(404).json({ error: "Client not found." });
     }
@@ -59,7 +59,7 @@ const createUser = async (req, res) => {
       return res.status(400).json({ error: "Invalid client data." });
     }
 
-    const response = await mongoDb.getDatabase().db().collection("clientes").insertOne(user);
+    const response = await mongoDb.getDatabase().collection("clientes").insertOne(user);
     if (response.acknowledged) {
       res.status(201).json({ message: "Client created successfully." });
     } else {
@@ -85,7 +85,7 @@ const updateUser = async (req, res) => {
       return res.status(400).json({ error: "Invalid client data." });
     }
 
-    const response = await mongoDb.getDatabase().db().collection("clientes").replaceOne({ _id: userId }, user);
+    const response = await mongoDb.getDatabase().collection("clientes").replaceOne({ _id: userId }, user);
     if (response.modifiedCount > 0) {
       res.status(200).json({ message: "Client updated successfully." });
     } else {
@@ -100,7 +100,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id);
-    const response = await mongoDb.getDatabase().db().collection("clientes").deleteOne({ _id: userId });
+    const response = await mongoDb.getDatabase().collection("clientes").deleteOne({ _id: userId });
     if (response.deletedCount > 0) {
       res.status(200).json({ message: "Client deleted successfully." });
     } else {
