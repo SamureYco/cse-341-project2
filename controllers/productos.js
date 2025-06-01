@@ -22,6 +22,7 @@ const getAll = async (req, res) => {
             res.status(200).json(productos);
         });
     } catch (error) {
+        console.error("Error retrieving products:", error);
         res.status(500).json({ error: "Error retrieving products." });
     }
 };
@@ -35,6 +36,7 @@ const getSingle = async (req, res) => {
             res.status(200).json(productos[0]);
         });
     } catch (error) {
+        console.error("Error retrieving the product:", error);
         res.status(500).json({ error: "Error retrieving the product." });
     }
 };
@@ -58,6 +60,7 @@ const createUser = async (req, res) => {
             res.status(500).json({ error: "Failed to create product." });
         }
     } catch (error) {
+        console.error("Error creating the product:", error);
         res.status(500).json({ error: "Error creating the product." });
     }
 };
@@ -82,6 +85,7 @@ const updateUser = async (req, res) => {
             res.status(500).json({ error: "Failed to update product." });
         }
     } catch (error) {
+        console.error("Error updating the product:", error);
         res.status(500).json({ error: "Error updating the product." });
     }
 };
@@ -96,6 +100,7 @@ const deleteUser = async (req, res) => {
             res.status(500).json({ error: "Failed to delete product." });
         }
     } catch (error) {
+        console.error("Error deleting the product:", error);
         res.status(500).json({ error: "Error deleting the product." });
     }
 };
