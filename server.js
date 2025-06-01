@@ -1,4 +1,3 @@
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongodb = require("./data/database");
@@ -10,34 +9,30 @@ const cors = require("cors");
 const port = process.env.PORT || 3000;
 const app = express();
 
+// Configuración CORS unificada
+app.use(cors({
+  origin: "*",  // Puedes restringir esto si necesitas seguridad más estricta
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Z-Key"]
+}));
+
 // Middlewares
-app
-  .use(bodyParser.json())
-  .use(
-    session({
-      secret: "secret",
-      resave: false,
-      saveUninitialized: false,
-    })
-  )
-  .use(passport.initialize())
-  .use(passport.session())
-  .use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept, Z-Key"
-    );
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "POST, GET, PUT, PATCH, OPTIONS, DELETE"
-    );
-    next();
+app.use(bodyParser.json());
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
   })
-  .use(cors({ methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"] }))
-  .use(cors({ origin: "*" }))
-  .use("/", require("./routes/index.js"))
-  .use("/api-docs", require("./routes/swagger"));
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Rutas
+app.use("/", require("./routes/index.js"));
+app.use("/api-docs", require("./routes/swagger"));
 
 // Passport GitHub Strategy
 passport.use(
@@ -60,8 +55,6 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
-
-// Rutas
 
 // Ruta para iniciar sesión con GitHub
 app.get('/login/github', passport.authenticate('github'));
