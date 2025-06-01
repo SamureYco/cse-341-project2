@@ -16,7 +16,7 @@ function validateProductData(data) {
 
 const getAll = async (req, res) => {
     try {
-        const result = await mongoDb.getDatabase().db().collection("productos").find();
+        const result = await mongoDb.getDatabase().collection("productos").find();
         result.toArray().then((productos) => {
             res.setHeader("Content-Type", "application/json");
             res.status(200).json(productos);
@@ -30,7 +30,7 @@ const getAll = async (req, res) => {
 const getSingle = async (req, res) => {
     try {
         const productId = new ObjectId(req.params.id);
-        const result = await mongoDb.getDatabase().db().collection("productos").find({ _id: productId });
+        const result = await mongoDb.getDatabase().collection("productos").find({ _id: productId });
         result.toArray().then((productos) => {
             res.setHeader("Content-Type", "application/json");
             res.status(200).json(productos[0]);
@@ -53,7 +53,7 @@ const createUser = async (req, res) => {
     }
 
     try {
-        const response = await mongoDb.getDatabase().db().collection("productos").insertOne(product);
+        const response = await mongoDb.getDatabase().collection("productos").insertOne(product);
         if (response.acknowledged) {
             res.status(201).json({ message: "Product created successfully." });
         } else {
@@ -78,7 +78,7 @@ const updateUser = async (req, res) => {
     }
 
     try {
-        const response = await mongoDb.getDatabase().db().collection("productos").replaceOne({ _id: productId }, product);
+        const response = await mongoDb.getDatabase().collection("productos").replaceOne({ _id: productId }, product);
         if (response.modifiedCount > 0) {
             res.status(200).json({ message: "Product updated successfully." });
         } else {
@@ -93,7 +93,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     const productId = new ObjectId(req.params.id);
     try {
-        const response = await mongoDb.getDatabase().db().collection("productos").deleteOne({ _id: productId });
+        const response = await mongoDb.getDatabase().collection("productos").deleteOne({ _id: productId });
         if (response.deletedCount > 0) {
             res.status(200).json({ message: "Product deleted successfully." });
         } else {
