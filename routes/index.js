@@ -11,9 +11,9 @@ router.get("/",(req,res)=>{
     res.json({message:"Welcome to my new API"});
 });
 
-router.get("/login", passport.authenticate("github"), (req,res) => {});
+router.get("/login", passport.authenticate("github", { scope: ["user:email"] }), (req,res) => {});
 
-router.get("logout", function(req,res, next){
+router.get("/logout", function(req,res, next){
     req.logout(function(req,res,next){
         req.logout(function(err){
             if(err){ return next(err);}
